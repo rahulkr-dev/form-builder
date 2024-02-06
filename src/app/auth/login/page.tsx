@@ -70,7 +70,7 @@ const LoginPage = () => {
         <SocialLogin />
         <RedirectLinks
           redirectHref="/auth/signup"
-          text="don't have an account ?"
+          text={`Don&apos;t have an account? Sign Up`}
         />
       </Form>
     </AuthWrapper>

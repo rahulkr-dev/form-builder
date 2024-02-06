@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 interface RediectLinkProps{
@@ -8,11 +7,15 @@ interface RediectLinkProps{
 }
 const RedirectLinks = ({redirectHref,text}:RediectLinkProps) => {
   return (
-    <Button variant={"link"} asChild className='' >
-        <Link className='font-normal text-thin text-xs text-blue-700' href={redirectHref}>
-            {text}
-        </Link>
-    </Button>
+    <p className="py-2 text-sm text-muted-foreground hover:underline">
+    <Link
+      href={redirectHref}
+      className="hover:text-brand"
+    >
+      {text}
+     
+    </Link>
+  </p>
   )
 }
 
