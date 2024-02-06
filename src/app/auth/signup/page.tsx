@@ -27,7 +27,7 @@ const form = useForm<z.infer<typeof singupSchema>>({
   return (
     <AuthWrapper cardTitle="Signup" >
         <Form {...form}>
-            <form className="space-y-5">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                 <FormField name="name" render={({field})=>(
                     <FormItem>
 
