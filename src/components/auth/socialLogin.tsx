@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { FaGithub } from "react-icons/fa";
 
 export const SocialLogin = () => {

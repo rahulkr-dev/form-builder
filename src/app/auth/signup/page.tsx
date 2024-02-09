@@ -1,6 +1,6 @@
 "use client"
 import * as z from "zod"
-import { AuthWrapper } from '@/components/ui/auth/authWrapper'
+import { AuthWrapper } from '@/components/auth/authWrapper'
 import React from 'react'
 import {Form,FormField,FormItem,FormLabel,FormControl,FormMessage} from "@/components/ui/form"
 import { Input } from '@/components/ui/input';
@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { singupSchema } from "@/schema/signupSchema";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from "@/components/ui/button"
-import RedirectLinks from "@/components/ui/auth/redirectLinks"
+import RedirectLinks from "@/components/auth/redirectLinks"
 
 const SignupPage = () => {
 

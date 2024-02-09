@@ -1,6 +1,6 @@
 "use client";
 import * as z from "zod";
-import { AuthWrapper } from "@/components/ui/auth/authWrapper";
+import { AuthWrapper } from "@/components/auth/authWrapper";
 import {
   Form,
   FormField,
@@ -14,8 +14,8 @@ import { Input } from "@/components/ui/input";
 import { loginSchema } from "@/schema/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { SocialLogin } from "@/components/ui/auth/socialLogin";
-import RedirectLinks from "@/components/ui/auth/redirectLinks";
+import { SocialLogin } from "@/components/auth/socialLogin";
+import RedirectLinks from "@/components/auth/redirectLinks";
 const LoginPage = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
