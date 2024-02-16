@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 
-
-import { sidebarContent } from './sidebar-content';
+import { sidebarContent } from "./sidebar-content";
 import {
   Accordion,
   AccordionContent,
@@ -11,28 +10,39 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-
 const Sidebar = () => {
   return (
-    <div className="w-[250px] bg-blue-400 text-white h-screen">
+    <div className="w-[250px] bg-gray-100 px-4 py-4 h-screen">
       <Accordion type="single" collapsible className={cn("space-y-4")}>
         {sidebarContent.map((item, i) => (
-          <div key={i}>
-            <p className=" bold ">{item.title}</p>
+          <div key={i} className="space-y-3">
+            <p className=" bold mb-2 ">{item.title}</p>
             {item.items.map((menu, i) =>
-              menu.isLink? (
-                <div key={i}>
-                  <p className="text-green pl-4">{menu.title}</p>
+              menu.isLink ? (
+                <div key={i} className="flex px-2 gap-3 items-center py-2 cursor-pointer hover:bg-blue-100">
+                  {React.createElement(menu.icon)}
+                  <p className="">{menu.title}</p>
                 </div>
               ) : (
-                <AccordionItem key={i} value={menu.title} className="border-none">
-                  <AccordionTrigger className="bg-yellow-500">{menu.title}</AccordionTrigger>
+                <AccordionItem
+                  key={i}
+                  value={menu.title}
+                  className="border-none "
+                >
+                  <AccordionTrigger className="hover:bg-blue-100 px-2 py-2 ">
+                    <div className="flex gap-3 items-center">
+                      <span>{React.createElement(menu.icon)}</span>
+
+                      <p>{menu.title}</p>
+                    </div>
+                  </AccordionTrigger>
                   <AccordionContent>
-                    {Array.isArray(menu.items) && menu.items.map((submenu, i) => (
-                      <p key={i} className=" pl-4">
-                       ---- {submenu.name}
-                      </p>
-                    ))}
+                    {Array.isArray(menu.items) &&
+                      menu.items.map((submenu, i) => (
+                        <p key={i} className=" pl-4 py-2 cursor-pointer hover:bg-blue-50">
+                          {submenu.name}
+                        </p>
+                      ))}
                   </AccordionContent>
                 </AccordionItem>
               )

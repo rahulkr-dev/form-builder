@@ -1,118 +1,130 @@
+import {
+  HomeIcon,
+  ClockIcon,
+  CheckIcon,
+  PlusCircledIcon,
+  CircleIcon,
+  LockClosedIcon,
+  BellIcon,
+  QuestionMarkCircledIcon,
+  MixIcon
+} from '@radix-ui/react-icons';
+
 export const sidebarContent = [
-    {
-      title: "General",
-      items: [
-        {
-          title: "Dashboard",
-          icon: "home",
-          isLink: true,
-          link: "/dashboard",
-        },
-        {
-          title: "Orders",
-          icon: "receipt",
-          isLink: false,
-          items: [
-            {
-              name: "All Orders",
-              link: "/orders/all",
-              icon: "list",
-              badge: {
-                text: "10",
-                color: "green",
-              },
+  {
+    title: "General",
+    items: [
+      {
+        title: "Dashboard",
+        icon: HomeIcon,
+        isLink: true,
+        link: "/dashboard",
+      },
+      {
+        title: "Orders",
+        icon: PlusCircledIcon,
+        isLink: false,
+        items: [
+          {
+            name: "All Orders",
+            link: "/orders/all",
+            icon: PlusCircledIcon,
+            badge: {
+              text: "10",
+              color: "green",
             },
-            {
-              name: "Pending Orders",
-              link: "/orders/pending",
-              icon: "clock",
-            },
-            {
-              name: "Completed Orders",
-              link: "/orders/completed",
-              icon: "check",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Applications",
-      items: [
-        {
-          title: "Products",
-          icon: "box",
-          isLink: false,
-          items: [
-            {
-              name: "All Products",
-              link: "/products/all",
-              icon: "package",
-            },
-            {
-              name: "Add New Product",
-              link: "/products/add",
-              icon: "plusCircle",
-            },
-          ],
-        },
-        {
-          title: "Customers",
-          icon: "user",
-          isLink: false,
-          items: [
-            {
-              name: "All Customers",
-              link: "/customers/all",
-              icon: "users",
-            },
-            {
-              name: "Add New Customer",
-              link: "/customers/add",
-              icon: "userPlus",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      items: [
-        {
-          title: "Profile",
-          icon: "userCircle",
-          isLink: true,
-          link: "/settings/profile",
-        },
-        {
-          title: "Security",
-          icon: "lockClosed",
-          isLink: true,
-          link: "/settings/security",
-        },
-        {
-          title: "Notifications",
-          icon: "bell",
-          isLink: true,
-          link: "/settings/notifications",
-        },
-      ],
-    },
-    {
-      title: "Help & Support",
-      items: [
-        {
-          title: "FAQs",
-          icon: "questionMarkCircle",
-          isLink: true,
-          link: "/help/faqs",
-        },
-        {
-          title: "Contact Us",
-          icon: "mail",
-          isLink: true,
-          link: "/help/contact",
-        },
-      ],
-    },
-  ];
+          },
+          {
+            name: "Pending Orders",
+            link: "/orders/pending",
+            icon: ClockIcon,
+          },
+          {
+            name: "Completed Orders",
+            link: "/orders/completed",
+            icon: CheckIcon,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Applications",
+    items: [
+      {
+        title: "Products",
+        icon: CircleIcon,
+        isLink: false,
+        items: [
+          {
+            name: "All Products",
+            link: "/products/all",
+            icon: CircleIcon,
+          },
+          {
+            name: "Add New Product",
+            link: "/products/add",
+            icon: CircleIcon,
+          },
+        ],
+      },
+      {
+        title: "Customers",
+        icon: QuestionMarkCircledIcon,
+        isLink: false,
+        items: [
+          {
+            name: "All Customers",
+            link: "/customers/all",
+            icon: QuestionMarkCircledIcon,
+          },
+          {
+            name: "Add New Customer",
+            link: "/customers/add",
+            icon: QuestionMarkCircledIcon,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Settings",
+    items: [
+      {
+        title: "Profile",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/settings/profile",
+      },
+      {
+        title: "Security",
+        icon: LockClosedIcon,
+        isLink: true,
+        link: "/settings/security",
+      },
+      {
+        title: "Notifications",
+        icon: BellIcon,
+        isLink: true,
+        link: "/settings/notifications",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+];
