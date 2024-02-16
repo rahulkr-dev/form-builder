@@ -1,6 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { chatList,chatMsg } from "./seed";
-import { PaperPlaneIcon,FaceIcon } from "@radix-ui/react-icons";
+import { chatList, chatMsg } from "./seed";
+import { PaperPlaneIcon, FaceIcon } from "@radix-ui/react-icons";
 
 interface IChatObj {
   profileImage: string;
@@ -15,6 +15,7 @@ interface IChatListProps {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 export function AvatarProfile({
   src,
@@ -67,12 +68,23 @@ const ChatListItem = ({ chat }: { chat: IChatObj }) => {
 };
 
 const ChatBody = () => {
-  return <ScrollArea className=" px-2 h-[calc(100vh-11rem)] flex flex-col ">
-    {chatMsg.map((chat, index) => {
-      return <Chat key={index} type={chat.type} text={chat.text} createdAt={chat.createdAt} />;
-    })}
-
-  </ScrollArea>
+  return (
+    <ScrollArea className="px-12 h-[calc(100vh-11rem)]">
+      <div className="flex flex-col gap-3">
+      {chatMsg.map((chat, index) => {
+        return (
+          <Chat
+            key={index}
+            type={chat.type}
+            text={chat.text}
+            createdAt={chat.createdAt}
+          />
+        );
+      })}
+      </div>
+      
+    </ScrollArea>
+  );
 };
 
 const ChatHeader = ({
@@ -90,7 +102,7 @@ const ChatHeader = ({
         <AvatarProfile src={profileImage} alt={username} fallback={username} />
         <div>
           <div>{username}</div>
-          <div className={clsx("text-gray-500")}>
+          <div className={cn("text-gray-500")}>
             {status ? "Online" : "Offline"}
           </div>
         </div>
@@ -98,30 +110,41 @@ const ChatHeader = ({
     </div>
   );
 };
-const Chat = ({type,text,createdAt}:{type:string,text:string,createdAt:string}) => {
-  return <div className={`${type=="sent"?"self-start":"self-end"} w-max`}>
-    <div className={clsx("py-2 px-4  text-sm rounded-xl bg-gray-100")}>
-      {text}
+const Chat = ({
+  type,
+  text,
+  createdAt,
+}: {
+  type: string;
+  text: string;
+  createdAt: string;
+}) => {
+  const isSentMsg = type == "sent";
+  return (
+    <div className={cn("w-max",{"self-end ":isSentMsg})}>
+      <div className={cn("py-2 px-4 bg-gray-100  text-sm rounded-xl",{"bg-green-600 bg-opacity-70 text-white":isSentMsg})}>
+        {text}
+      </div>
+      {/* <div className="text-xs text-gray-500">{createdAt.slice(0, 10)}</div> */}
     </div>
-    <div className="text-xs text-gray-500">{createdAt.slice(0,10)}</div>
-  </div>
+  );
 };
 
 const ChatInput = () => {
   return (
     <div className="h-16 px-12   border-t-2 grid grid-cols-8 gap-2 w-full justify-center items-center ">
-                
       <div className="col-span-6 py-2 px-4 rounded-xl bg-gray-100 flex gap-2 items-center">
         <span className="text-5xl">
-        <FaceIcon  className="text-pink-400 cursor-pointer" />
-
+          <FaceIcon className="text-pink-400 cursor-pointer" />
         </span>
-        <input type="text" className="w-full focus:outline-none bg-transparent " />
+        <input
+          type="text"
+          className="w-full focus:outline-none bg-transparent "
+        />
       </div>
       <div className="col-span-1">
         <div className="w-8 h-8 cursor-pointer bg-blue-500 text-white rounded-full flex justify-center items-center from-blue-600">
-        <PaperPlaneIcon className="" />
-
+          <PaperPlaneIcon className="" />
         </div>
       </div>
     </div>
