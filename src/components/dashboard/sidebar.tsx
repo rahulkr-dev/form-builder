@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const Sidebar = () => {
   return (
-    <div className="w-[250px] bg-gray-100 px-4 py-4 h-screen">
+    <div className="w-full bg-gray-100 px-4 py-4 h-screen">
       <Accordion type="single" collapsible className={cn("space-y-4")}>
         {sidebarContent.map((item, i) => (
           <div key={i} className="space-y-3">
