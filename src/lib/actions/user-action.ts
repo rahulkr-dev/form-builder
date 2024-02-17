@@ -11,10 +11,10 @@ import User from "../models/user-modal";
 export async function createUser(user: CreateUserParams) {
   try {
     let dbInstance = await connectToDatabase();
-    console.log(dbInstance.connection,"dbInstance")
+    // console.log(dbInstance.connection,"dbInstance")
 
     const newUser = await User.create(user);
-    console.log(newUser,"newUser created")
+    // console.log(newUser,"newUser created")
 
     return JSON.parse(JSON.stringify(newUser));
   } catch (error) {

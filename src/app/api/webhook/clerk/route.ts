@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { clerkClient } from "@clerk/nextjs";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
@@ -64,7 +63,7 @@ export async function POST(req: Request) {
      // CREATE
      if (eventType === "user.created") {
        const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
-   
+      
        const user = {
          clerkId: id,
          email: email_addresses[0].email_address,
@@ -73,19 +72,20 @@ export async function POST(req: Request) {
          lastName: last_name,
          photo: image_url,
        };
+       console.log(user,"user")
    
-       const newUser = await createUser(user);
+       await createUser(user);
    
        // Set public metadata
-       if (newUser) {
-         await clerkClient.users.updateUserMetadata(id, {
-           publicMetadata: {
-             userId: newUser._id,
-           },
-         });
-       }
+      //  if (newUser) {
+      //    await clerkClient.users.updateUserMetadata(id, {
+      //      publicMetadata: {
+      //        userId: newUser._id,
+      //      },
+      //    });
+      //  }
    
-       return NextResponse.json({ message: "OK", user: newUser });
+      //  return NextResponse.json({ message: "OK", user: newUser });
      }
    
      // UPDATE
@@ -121,7 +121,8 @@ export async function POST(req: Request) {
     if(error instanceof Error) {
     console.log(error.message,"error")
     }else{
-        console.log(error,"error" )
+      console.log("Something went wrong")
+        // console.log(error,"error" )
         return new Response("Error occured", {  status: 200,});
     }
     
