@@ -3,11 +3,11 @@ import { UserButton } from "@clerk/nextjs"
 const HomePage = () => {
   return (
     <div>
-     <p >
+     <p>
       Home page
       </p>
 
-      <UserButton afterSignOutUrl="/" />
+      {/* <UserButton afterSignOutUrl="/" /> */}
     
     </div>
   )

@@ -14,7 +14,6 @@ interface IChatListProps {
 }
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import clsx from "clsx";
 import { cn } from "@/lib/utils";
 
 export function AvatarProfile({

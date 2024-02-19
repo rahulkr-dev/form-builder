@@ -21,6 +21,31 @@ export const sidebarContent = [
         link: "/dashboard",
       },
       {
+        title:"Form-builder",
+        icon: MixIcon,
+        isLink:false,
+        items:[
+          {
+            name: "All Forms",
+            link: "/forms/all",
+            icon: MixIcon,
+          },
+          {
+            name: "Create New Form",
+            link: "/forms/create",
+            icon: MixIcon,
+          },
+        ]
+      },
+      {
+        title: "Chat",
+        icon: MixIcon,
+        isLink: true,
+        link: "/chat",
+      },
+
+      // Dummy links
+      {
         title: "Orders",
         icon: PlusCircledIcon,
         isLink: false,
