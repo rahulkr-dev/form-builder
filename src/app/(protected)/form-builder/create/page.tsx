@@ -1,55 +1,64 @@
 "use client"
-import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
-const init = [
-  { id: '1', content: 'First' },
-  { id: '2', content: 'Second' },
-  { id: '3', content: 'Third' },
-  { id: '4', content: 'Fourth' },
-  { id: '5', content: 'Fifth' },
-  { id: '6', content: 'Sixth' },
-  { id: '7', content: 'Seventh' },
-];
+import React from "react"
+import { Path, useForm, UseFormRegister, SubmitHandler } from "react-hook-form"
 
 
+interface IFormValues {
+  "First Name": string
+  Age: number
+}
 
 
-const CreateForm = () => {
-  const [todos, setTodos] = useState(init);
+type InputProps = {
+  label: Path<IFormValues>
+  register: UseFormRegister<IFormValues>
+  required: boolean
+}
+
+
+// The following component is an example of your existing Input Component
+const Input = ({ label, register, required }: InputProps) => (
+  <>
+    <label>{label}</label>
+    <input {...register(label, { required })} />
+  </>
+)
+
+
+// you can use React.forwardRef to pass the ref too
+const Select = React.forwardRef<
+  HTMLSelectElement,
+  { label: string } & ReturnType<UseFormRegister<IFormValues>>
+>(({ onChange, onBlur, name, label }, ref) => (
+  <>
+    <label>{label}</label>
+    <select name={name} ref={ref} onChange={onChange} onBlur={onBlur}>
+      <option value="20">20</option>
+      <option value="30">30</option>
+    </select>
+  </>
+))
+
+Select.displayName = "Select";
+
+
+
+const App = () => {
+  const { register, handleSubmit } = useForm<IFormValues>()
+
+
+  const onSubmit: SubmitHandler<IFormValues> = (data) => {
+    alert(JSON.stringify(data))
+  }
+
 
   return (
-    <main>
-      <h1>Create Form</h1>
-      <DragDropContext onDragEnd={() => { console.log("hi") }}>
-        <Droppable droppableId='droppable'>
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className="space-y-5 w-1/2 m-auto grid gap-2 bg-blue-100"
-            >
-              {todos.map((todo, index) => (
-                <Draggable key={todo.id} draggableId={todo.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      className="bg-blue-300 p-4"
-                    >
-                      {todo.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </main>
-  );
-};
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input label="First Name" register={register} required />
+      <Select label="Age" {...register("Age")} />
+      <input type="submit" />
+    </form>
+  )
+}
 
-export default CreateForm;
+export default App
