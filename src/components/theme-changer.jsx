@@ -13,19 +13,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemChanger() {
-  const { setTheme } = useTheme();
+  const { setTheme,themes,theme } = useTheme();
+  console.log(themes,"themes",theme,"theme"  )
 
   return (
     <div className="flex gap-3 items-center">
       <div className="flex items-center gap-4 justify-center">
-        <SunIcon
-          onClick={() => setTheme("light")}
-          className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 cursor-pointer"
-        />
-        <MoonIcon
-          onClick={() => setTheme("dark")}
-          className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 cursor-pointer"
-        />
+        {
+          theme === "dark"?(  <SunIcon
+            onClick={() => setTheme("light")}
+            className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 cursor-pointer"
+          />):(  <MoonIcon
+            onClick={() => setTheme("dark")}
+            className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 cursor-pointer"
+          />)
+        }
+      
+      
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

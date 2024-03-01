@@ -18,23 +18,23 @@ import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const hover_class = `hover:bg-muted hover:text-muted-foreground`
+  const hover_class = `hover:bg-muted hover:text-muted-foreground rounded-md`
   const active_class = `bg-muted text-muted-foreground`
   return (
-    <ScrollArea className="bg-primary text-primary-foreground">
+    <ScrollArea className="bg-border text-foreground ">
 
-    <div className="w-full  px-4 py-3  h-screen">
+    <div className="w-full  px-4 py-3  h-screen ">
       <Accordion type="single" collapsible className="">
         {sidebarContent.map((item, i) => (
           <div key={i} className="">
-            {i !== 0 && <Separator className="bg-muted" />}
+            {i !== 0 && <Separator className="bg-card" />}
             <p className={cn("font-semibold",{"mt-8":i})}>{item.title}</p>
             {item.items.map((menu, i) =>
               menu.isLink && menu.link ? (
                 <Link
                   key={menu.link}
                   className={cn(
-                    `flex px-2 gap-3 py-2 items-center  cursor-pointer ${hover_class}`,
+                    `flex px-2 gap-3 py-2 items-center text-sm font-medium transition-all cursor-pointer ${hover_class}`,
                     {active_class: pathname === menu.link }
                   )}
                   href={menu.link}

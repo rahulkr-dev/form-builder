@@ -1,20 +1,20 @@
 const chatex = [
     {
-      profileImage: 'https://via.placeholder.com/150',
+      profileImage: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250',
       username: 'rahul8181',
       lastMessage: 'Hello',
       lastDate: '2021-01-01',
       notification: 3
     },
     {
-      profileImage: 'https://via.placeholder.com/150',
+      profileImage: 'https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250',
       username: 'john_doe',
       lastMessage: 'Hey there!',
       lastDate: '2021-02-05',
       notification: 1
     },
     {
-      profileImage: 'https://via.placeholder.com/150',
+      profileImage: '',
       username: 'sara_smith',
       lastMessage: 'What are you up to?',
       lastDate: '2021-03-10',

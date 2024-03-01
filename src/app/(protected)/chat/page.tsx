@@ -28,7 +28,7 @@ export function AvatarProfile({
   return (
     <Avatar>
       <AvatarImage src={src} alt={alt} />
-      <AvatarFallback>{fallback}</AvatarFallback>
+      <AvatarFallback>{fallback.slice(0,2)}</AvatarFallback>
     </Avatar>
   );
 }
@@ -54,13 +54,18 @@ const ChatListItem = ({ chat }: { chat: IChatObj }) => {
       </div>
       <div className="col-span-7">
         <div className="font-semibold">{chat.username}</div>
-        <div>{chat.lastMessage}</div>
+        <div>{chat.lastMessage.length>19?chat.lastMessage.slice(0,18): chat.lastMessage}</div>
       </div>
       <div className="col-span-3 flex flex-col gap-2">
-        <div className="text-xs">{chat.lastDate}</div>
-        <div className="w-4 self-end text-end h-4 rounded-full  flex justify-center items-center">
-          {chat.notification}
-        </div>
+        <div className="text-[11px] text-end text-ring font-semibold">{chat.lastDate}</div>
+        {
+          Number(chat.notification) > 0 && (
+            <div className="w-4 self-end p-3 text-end h-4 rounded-full text-primary bg-primary-foreground  flex justify-center items-center">
+            {chat.notification}
+          </div>
+          )
+        }
+      
       </div>
     </div>
   );
@@ -131,18 +136,18 @@ const Chat = ({
 
 const ChatInput = () => {
   return (
-    <div className="h-16 px-12 bg-muted   border-t-2 grid grid-cols-8 gap-2 w-full justify-center items-center ">
-      <div className="col-span-6 py-2 px-4 rounded-xl bg-background flex gap-2 items-center">
+    <div className="h-16 px-12   border-t-2 grid grid-cols-8 gap-2 w-full justify-center items-center ">
+      <div className="col-span-6 py-2 px-4 rounded-xl bg-primary-foreground text-black flex gap-2 items-center">
         <span className="text-5xl">
-          <FaceIcon className="text-destructive cursor-pointer" />
+          <FaceIcon className="text-destructive  cursor-pointer" />
         </span>
         <input
           type="text"
-          className="w-full focus:outline-none bg-card "
+          className="w-full focus:outline-none bg-transparent"
         />
       </div>
       <div className="col-span-1">
-        <div className="w-8 h-8 cursor-pointer bg-card rounded-full flex justify-center items-center ">
+        <div className="w-8 h-8 cursor-pointer bg-primary-foreground p-2 rounded-full flex justify-center items-center ">
           <PaperPlaneIcon className="text-destructive" />
         </div>
       </div>
