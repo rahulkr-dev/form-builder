@@ -2,6 +2,9 @@
 import React from "react";
 
 import { sidebarContent } from "./sidebar-content";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+
 import {
   Accordion,
   AccordionContent,
@@ -15,20 +18,24 @@ import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  console.log(pathname, "pathname");
+  const hover_class = `hover:bg-muted hover:text-muted-foreground`
+  const active_class = `bg-muted text-muted-foreground`
   return (
-    <div className="w-full bg-gray-100 px-4 py-4 h-screen">
-      <Accordion type="single" collapsible className={cn("space-y-4")}>
+    <ScrollArea className="bg-primary text-primary-foreground">
+
+    <div className="w-full  px-4 py-3  h-screen">
+      <Accordion type="single" collapsible className="">
         {sidebarContent.map((item, i) => (
-          <div key={i} className="space-y-3">
-            <p className=" bold mb-2 ">{item.title}</p>
+          <div key={i} className="">
+            {i !== 0 && <Separator className="bg-muted" />}
+            <p className={cn("font-semibold",{"mt-8":i})}>{item.title}</p>
             {item.items.map((menu, i) =>
               menu.isLink && menu.link ? (
                 <Link
                   key={menu.link}
                   className={cn(
-                    "flex px-2 gap-3 items-center py-2 cursor-pointer hover:bg-blue-100",
-                    { "bg-blue-50": pathname === menu.link }
+                    `flex px-2 gap-3 py-2 items-center  cursor-pointer ${hover_class}`,
+                    {active_class: pathname === menu.link }
                   )}
                   href={menu.link}
                 >
@@ -39,11 +46,11 @@ const Sidebar = () => {
                 <AccordionItem
                   key={menu.title}
                   value={menu.title}
-                  className="border-none "
+                  className="border-none"
                 >
                   <AccordionTrigger
-                    className={cn("hover:bg-blue-100 px-2 py-2", {
-                      "bg-blue-100": menu.items?.some(
+                    className={cn(`${hover_class} px-2 py-2 pb-3 m-0`, {
+                      active_class: menu.items?.some(
                         (submenu) => submenu.link === pathname
                       ),
                     })}
@@ -60,11 +67,12 @@ const Sidebar = () => {
                         <Link
                           key={submenu.link}
                           className={cn(
-                            "block pl-4 py-2 cursor-pointer hover:bg-blue-50",
-                            { "bg-blue-50": pathname === submenu.link }
+                            `pl-4 py-2 flex gap-2 cursor-pointer ${hover_class}`,
+                            {active_class: pathname === submenu.link }
                           )}
                           href={submenu.link}
                         >
+                           {React.createElement(menu.icon)}
                           {submenu.name}
                         </Link>
                       ))}
@@ -76,6 +84,8 @@ const Sidebar = () => {
         ))}
       </Accordion>
     </div>
+    </ScrollArea>
+
   );
 };
 

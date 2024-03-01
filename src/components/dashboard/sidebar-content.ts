@@ -21,6 +21,12 @@ export const sidebarContent = [
         link: "/dashboard",
       },
       {
+        title: "Color Test",
+        icon: HomeIcon,
+        isLink: true,
+        link: "/test",
+      },
+      {
         title:"Form-builder",
         icon: MixIcon,
         isLink:false,
@@ -132,6 +138,108 @@ export const sidebarContent = [
         icon: BellIcon,
         isLink: true,
         link: "/settings/notifications",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
+      },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      {
+        title: "FAQs",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/faqs",
+      },
+      {
+        title: "Contact Us",
+        icon: QuestionMarkCircledIcon,
+        isLink: true,
+        link: "/help/contact",
       },
     ],
   },
